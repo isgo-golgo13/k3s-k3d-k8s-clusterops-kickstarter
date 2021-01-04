@@ -193,4 +193,33 @@ k3d node create server-node --cluster k3d-kickstart-cluster --replicas 2 --role 
 ```
 
 
+#### Create Multiple k3d k8s Clusters and How-To Context Switch To Different Clusters
+
+For this exercise, delete the current cluster (use `k3d cluster list` to get the cluster's name required to delete the cluster).
+
+```
+k3d cluster delete <cluster-name>
+```
+
+Now the next steps will create 3 clusters.
+
+To Create `3` HA Clusters Each (min 3 server nodes/3 worker nodes) run the following:
+
+`1.` Create cluster 1 as `k3d-cluster-kickstart-1`: With 3 server nodes and 3 worker nodes
+
+```
+k3d cluster create k3d-cluster-kickstart-1 --agents 3 --servers 3 --verbose (verbose flag is NOT required)
+```
+
+`2.` Create cluster 2 as `k3d-cluster-kickstart-2`: With 3 server nodes and 3 worker nodes
+
+```
+k3d cluster create k3d-cluster-kickstart-2 --agents 3 --servers 3 --verbose (verbose flag is NOT required)
+```
+
+`3.` Create cluster 3 as `k3d-cluster-kickstart-3`: With 3 server nodes and 3 worker nodes
+
+```
+k3d cluster create k3d-cluster-kickstart-3 --agents 3 --servers 3 --verbose (verbose flag is NOT required)
+```
 
