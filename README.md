@@ -193,6 +193,7 @@ k3d node create server-node --cluster k3d-kickstart-cluster --replicas 2 --role 
 ```
 
 
+
 #### Create Multiple k3d k8s Clusters and How-To Context Switch To Different Clusters
 
 For this exercise, delete the current cluster (use `k3d cluster list` to get the cluster's name required to delete the cluster).
