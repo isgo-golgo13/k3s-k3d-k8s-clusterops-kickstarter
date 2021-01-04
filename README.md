@@ -363,6 +363,26 @@ To use this (after download) to switch contexts as done previously do the follow
 
 ```
 kubectx                     # This will show all cluster contexts
-kubectx <context-name>      # This will switch to the context identited using the '<context-name>'
+kubectx <context-name>      # This will switch to the context identified using the '<context-name>'
 ```
 
+
+#### Get Metrical Statistics on Clusters (Current context)
+
+To get metrics (CPU Cores, CPU%, Memory and Memory&) issue the folowing:
+
+```
+kubectl top nodes
+```
+
+and this will show:
+
+```
+NAME                                   CPU(cores)   CPU%   MEMORY(bytes)   MEMORY%
+k3d-k3d-cluster-kickstart-2-agent-0    54m          0%     103Mi           5%
+k3d-k3d-cluster-kickstart-2-agent-1    60m          1%     120Mi           6%
+k3d-k3d-cluster-kickstart-2-agent-2    72m          1%     149Mi           7%
+k3d-k3d-cluster-kickstart-2-server-0   154m         2%     415Mi           20%
+```
+
+**INFO on k3d >= 3.0.0** k3d comes with metrics-server, traefik ingress-controller, prometheus
