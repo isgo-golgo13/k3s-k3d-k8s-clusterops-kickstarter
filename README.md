@@ -247,5 +247,19 @@ k3d cluster delete k3d-cluster-kickstart-2
 k3d cluster delete k3d-cluster-kickstart-3
 ```
 
+***View the current k8s config*** 
+
+```
+kubectl config view
+```
+
+If there  no cluster contexts this instruction will result in an empty config view.
+
+`1.` Run the `kr8-3-3x3-k3d-cluster.sh` script to install 3 3x3  (3 server node/3 worker node clusters).
+
+```
+sh kr8-3-3x3-k3d-cluster.sh
+```
+
 
 
