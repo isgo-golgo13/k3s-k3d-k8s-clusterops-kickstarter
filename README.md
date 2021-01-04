@@ -98,3 +98,11 @@ NAME                    SERVERS   AGENTS   LOADBALANCER
 k3d-kickstart-cluster   1/1       0/0      true
 ```
 
+
+#### To Delete the k8s Cluster (Previously created k8s cluster 'k3d-kickstart-cluster')
+
+```
+k3d cluster delete k3d-kickstart-cluster
+```
+
+
