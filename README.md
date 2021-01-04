@@ -10,7 +10,7 @@ Sytax:
 k3d cluster create <cluster-name> --agents (or -a) <int for # of agents> --servers (or -s) <int for # of server nodes> --verbose (full verbose output)
 
 Actual use:
-k3d cluster create k3dkickstart-cluster --agents 3 --servers 1 --verbose
+k3d cluster create k3d-kickstart-cluster --agents 3 --servers 1 --verbose
 ```
 
 #### Create k3d cluster (1 server k8s node, NO worker nodes) followed with additional instructions to add worker nodes
@@ -28,7 +28,7 @@ Syntax:
 k3d cluster create <cluster-name> --servers <int for # of server nodes> --verbose
 
 Actual use:
-k3d cluster create k3dkickstart-cluster --servers 1 --verbose
+k3d cluster create k3d-kickstart-cluster --servers 1 --verbose
 ```
 
 
@@ -91,7 +91,7 @@ k3d cluster list
 
 ```
 
-After executing `k3d cluster create k3dkickstart-cluster --servers 1` or `k3d cluster create k3dkickstart-cluster` the following output is shown:
+After executing `k3d cluster create k3d-kickstart-cluster --servers 1` or `k3d cluster create k3d-kickstart-cluster` the following output is shown:
 
 ```
 NAME                    SERVERS   AGENTS   LOADBALANCER
@@ -137,15 +137,34 @@ Syntax:
 k3d node create <node-name> --cluster <cluster-name-to-associate-new-node(s)> --replicas <int for # of replicas> --role agent (default is 'agent') --wait 
 
 Actual use:
-k3d node create worker-node --cluster k3d-k3d-kickstart-cluster --replicas 3 --role agent --wait
+k3d node create worker-node --cluster k3d-kickstart-cluster --replicas 3 --role agent --wait
 
 or
 
 Since the default '--role' value is 'agent' the following is a shorter instruction to k3d:
 
-k3d node create worker-node --cluster k3d-k3d-kickstart-cluster --replicas 3 --wait
+k3d node create worker-node --cluster k3d-kickstart-cluster --replicas 3 --wait
 
 ```
+
+If the worker 3 worker nodes were created, to assure their creation run the following:
+
+```
+kubectl get nodes
+```
+
+and the output shown should reflect an single server node and three worker nodes now in the cluster as such:
+
+```
+NAME                                 STATUS   ROLES                  AGE   VERSION
+k3d-worker-node-2                    Ready    <none>                 28s   v1.20.0+k3s2
+k3d-k3d-kickstart-cluster-server-0   Ready    control-plane,master   77m   v1.20.0+k3s2
+k3d-worker-node-0                    Ready    <none>                 29s   v1.20.0+k3s2
+k3d-worker-node-1                    Ready    <none>                 28s   v1.20.0+k3s2
+```
+
+
+
 
 To add `N` server nodes to the current single node cluster issue the following syntax: **(Create 2 additional server nodes)**
 
@@ -153,7 +172,7 @@ To add `N` server nodes to the current single node cluster issue the following s
 k3d node create <node-name> --cluster <cluster-name-to-associate-new-node(s)> --replicas <int for # of replicas> --role server --wait 
 
 Actual use:
-k3d node create server-node --cluster k3d-k3d-kickstart-cluster --replicas 2 --role server --wait
+k3d node create server-node --cluster k3d-kickstart-cluster --replicas 2 --role server --wait
 ```
 
 
