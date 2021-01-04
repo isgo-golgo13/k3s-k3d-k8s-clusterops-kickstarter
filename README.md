@@ -112,5 +112,48 @@ k3d cluster delete k3d-kickstart-cluster
 This will delete all k8s cluster config (context) **IF** and **ONLY IF** this was the only k8s cluster created using `k3d cluster create`. If there were other k8s clusters created **ONLY** the context of the deleted cluster will get deleted.
 
 
+#### To List All k3d k8s Nodes
+
+At this point our k8s cluster consists of 1 server node and 0 worker nodes. To get the current showing of the cluster nodes run the following:
+
+```
+kubectl get nodes
+```
+
+This will output:
+
+```
+NAME                                 STATUS   ROLES                  AGE   VERSION
+k3d-k3d-kickstart-cluster-server-0   Ready    control-plane,master   40m   v1.20.0+k3s2
+```
+
+#### To Add k8s Server Nodes or k8s Worker Nodes 
+
+To add `N` worker nodes to the current single node cluster issue the following syntax: **(Create 3 worker nodes)**
+
+```
+Syntax:
+k3d node create <node-name> --cluster <cluster-name-to-associate-new-node(s)> --replicas <int for # of replicas> --role agent (default is 'agent') --wait 
+
+Actual use:
+k3d node create worker-node --cluster k3d-k3d-kickstart-cluster --replicas 3 --role agent --wait
+
+or
+
+Since the default '--role' value is 'agent' the following is a shorter instruction to k3d:
+
+k3d node create worker-node --cluster k3d-k3d-kickstart-cluster --replicas 3 --wait
+
+```
+
+To add `N` server nodes to the current single node cluster issue the following syntax: **(Create 2 additional server nodes)**
+
+```
+k3d node create <node-name> --cluster <cluster-name-to-associate-new-node(s)> --replicas <int for # of replicas> --role server --wait 
+
+Actual use:
+k3d node create server-node --cluster k3d-k3d-kickstart-cluster --replicas 2 --role server --wait
+```
+
 
 
