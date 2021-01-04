@@ -127,6 +127,7 @@ NAME                                 STATUS   ROLES                  AGE   VERSI
 k3d-k3d-kickstart-cluster-server-0   Ready    control-plane,master   40m   v1.20.0+k3s2
 ```
 
+
 #### To Add k8s Server Nodes or k8s Worker Nodes 
 
 To add `N` worker nodes to the current single node cluster issue the following syntax: **(Create 3 worker nodes)**
