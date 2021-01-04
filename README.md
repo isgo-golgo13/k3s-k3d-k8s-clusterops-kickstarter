@@ -83,3 +83,18 @@ users:
 
 ```
 
+
+#### To List All k3d k8s Clusters
+
+```
+k3d cluster list
+
+```
+
+After executing `k3d cluster create k3dkickstart-cluster --servers 1` or `k3d cluster create k3dkickstart-cluster` the following output is shown:
+
+```
+NAME                    SERVERS   AGENTS   LOADBALANCER
+k3d-kickstart-cluster   1/1       0/0      true
+```
+
