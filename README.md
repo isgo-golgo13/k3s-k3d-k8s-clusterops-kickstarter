@@ -386,3 +386,19 @@ k3d-k3d-cluster-kickstart-2-server-0   154m         2%     415Mi           20%
 ```
 
 **INFO on k3d >= 3.0.0** k3d comes with metrics-server, traefik ingress-controller, prometheus
+
+
+####  Stopping and Re-Starting k3d Clusters
+
+To stop the currently active cluster issue the following:
+
+```
+k3d cluster stop <cluster-name>   # This stops the cluster
+```
+
+To restart the stopped cluster issue the following:
+
+```
+k3s cluster start <recently-stopped-cluster-name>
+```
+
