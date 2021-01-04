@@ -102,7 +102,15 @@ k3d-kickstart-cluster   1/1       0/0      true
 #### To Delete the k8s Cluster (Previously created k8s cluster 'k3d-kickstart-cluster')
 
 ```
+Syntax:
+k3d cluster delete <cluster-name>
+
+Actual Use:
 k3d cluster delete k3d-kickstart-cluster
 ```
+
+This will delete all k8s cluster config (context) IF and ONLY IF this was the only k8s cluster created using `k3d cluster create`. If there were other k8s clusters created `ONLY` the context of the deleted cluster will get deleted.
+
+
 
 
