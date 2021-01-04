@@ -163,6 +163,22 @@ k3d-worker-node-0                    Ready    <none>                 29s   v1.20
 k3d-worker-node-1                    Ready    <none>                 28s   v1.20.0+k3s2
 ```
 
+To get another view of all the nodes in the cluster you can also run the `k3d node list` instruction and this will include the default provided loadbalancer server node as follows:
+
+```
+k3d node list
+```
+
+and the output is shown with the inclusion of the `loadbalancer` server node.
+
+```
+NAME                                 ROLE           CLUSTER                 STATUS
+k3d-k3d-kickstart-cluster-server-0   server         k3d-kickstart-cluster   running
+k3d-k3d-kickstart-cluster-serverlb   loadbalancer   k3d-kickstart-cluster   running
+k3d-worker-node-0                    agent          k3d-kickstart-cluster   running
+k3d-worker-node-1                    agent          k3d-kickstart-cluster   running
+k3d-worker-node-2                    agent          k3d-kickstart-cluster   running
+```
 
 
 
