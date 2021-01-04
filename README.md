@@ -224,3 +224,28 @@ k3d cluster create k3d-cluster-kickstart-2 --agents 3 --servers 3 --verbose (ver
 k3d cluster create k3d-cluster-kickstart-3 --agents 3 --servers 3 --verbose (verbose flag is NOT required)
 ```
 
+
+See this Git repo for shell scripts to create 3 3x3 k3d k8s cluster (`kr8-3-3x3-k3d-cluster.sh`) and destroy the 3 3x3 k3s k8s cluster (`kr8-3-3x3-k3d-cluster`). 
+
+The `kr8-3-3x3-k3d-cluster.sh` is as straightforward as follows:
+
+```
+#! /bin/sh
+
+k3d cluster create k3d-cluster-kickstart-1 --agents 3 --servers 3 
+k3d cluster create k3d-cluster-kickstart-2 --agents 3 --servers 3
+k3d cluster create k3d-cluster-kickstart-3 --agents 3 --servers 3
+```
+
+The `kill-3-3x3-k3d-cluster.sh` is as straightforward as follows:
+
+```
+#! /bin/sh
+
+k3d cluster delete k3d-cluster-kickstart-1 
+k3d cluster delete k3d-cluster-kickstart-2
+k3d cluster delete k3d-cluster-kickstart-3
+```
+
+
+
