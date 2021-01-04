@@ -225,7 +225,7 @@ k3d cluster create k3d-cluster-kickstart-3 --agents 3 --servers 3 --verbose (ver
 ```
 
 
-See this Git repo for shell scripts to create 3 3x3 k3d k8s cluster (`kr8-3-3x3-k3d-cluster.sh`) and destroy the 3 3x3 k3s k8s cluster (`kr8-3-3x3-k3d-cluster`). 
+See this Git repo for shell scripts to create 3 3x3 k3d k8s cluster (`kr8-3-3x3-k3d-cluster.sh`) and destroy the 3 3x3 k3s k8s cluster (`kr8-3-3x3-k3d-cluster.sh`). 
 
 The `kr8-3-3x3-k3d-cluster.sh` is as straightforward as follows:
 
