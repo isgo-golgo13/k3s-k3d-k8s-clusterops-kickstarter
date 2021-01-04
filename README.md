@@ -261,5 +261,108 @@ If there  no cluster contexts this instruction will result in an empty config vi
 sh kr8-3-3x3-k3d-cluster.sh
 ```
 
+This will create 3 3x3 clusters for context switching showcase on the clusters.
+To see the clusters as created run:
 
+```
+k3d cluster list
+```
+
+and this output is shown as:
+
+```
+NAME                      SERVERS   AGENTS   LOADBALANCER
+k3d-cluster-kickstart-1   3/3       3/3      true
+k3d-cluster-kickstart-2   3/3       3/3      true
+k3d-cluster-kickstart-3   3/3       3/3      true
+```
+
+
+How to know which cluster is currently `active` of the ? To get this run the following:
+
+```
+kubectl get nodes
+```
+
+and this will show the cluster info (the server nodes, the worker nodes, lb) as shown:
+
+```
+NAME                                   STATUS   ROLES                  AGE     VERSION
+k3d-k3d-cluster-kickstart-2-agent-0    Ready    <none>                 6m37s   v1.20.0+k3s2
+k3d-k3d-cluster-kickstart-2-agent-1    Ready    <none>                 6m37s   v1.20.0+k3s2
+k3d-k3d-cluster-kickstart-2-agent-2    Ready    <none>                 6m36s   v1.20.0+k3s2
+k3d-k3d-cluster-kickstart-2-server-0   Ready    control-plane,master   6m35s   v1.20.0+k3s2
+k3d-k3d-cluster-kickstart-2-server-1   Ready    control-plane,master   6m35s   v1.20.0+k3s2
+k3d-k3d-cluster-kickstart-2-server-2   Ready    control-plane,master   6m35s   v1.20.0+k3s2
+```
+
+Now to switch contexts
+
+Run:
+
+```
+kubectl config get-contexts
+```
+
+and this shows:
+
+```
+CURRENT   NAME                                       CLUSTER                                    AUTHINFO                                   NAMESPACE
+          k3d-k3d-cluster-kickstart-1                k3d-k3d-cluster-kickstart-1                admin@k3d-k3d-cluster-kickstart-1
+*         k3d-k3d-cluster-kickstart-2                k3d-k3d-cluster-kickstart-2                admin@k3d-k3d-cluster-kickstart-2
+          k3d-k3d-cluster-kickstart-3                k3d-k3d-cluster-kickstart-3                admin@k3d-k3d-cluster-kickstart-3
+```
+
+
+As shown here, `k3d-k3d-cluster-kickstart-2 is the `actively current` cluster as marked with the `*` on the **CURRENT** column header.
+
+
+Now to switch contexts do the following:
+
+```
+Syntax:
+kubectl config use-context <context-name>  #  <context-name> is derived from 'kubectl config get-context' 
+
+Actual use:
+kubectl config use-context k3d-k3d-cluster-kickstart-1
+```
+
+After running this the active context shown running the `kubectl config get-contexts` instruction again shows the successful cluster context switch:
+
+```
+Switched to context "k3d-k3d-cluster-kickstart-1".
+
+Output from 'kubectl config get-contexts'
+
+CURRENT   NAME                                       CLUSTER                                    AUTHINFO                                   NAMESPACE
+*         k3d-k3d-cluster-kickstart-1                k3d-k3d-cluster-kickstart-1                admin@k3d-k3d-cluster-kickstart-1
+          k3d-k3d-cluster-kickstart-2                k3d-k3d-cluster-kickstart-2                admin@k3d-k3d-cluster-kickstart-2
+          k3d-k3d-cluster-kickstart-3                k3d-k3d-cluster-kickstart-3                admin@k3d-k3d-cluster-kickstart-3
+
+```
+
+Now to get nodes on the context switched to `k3d-k3d-cluster-kickstart-1`:
+
+```
+kubectl get nodes
+```
+
+shows the output of the `k3d-cluster-kickstart-1` cluster:
+
+```
+NAME                                   STATUS   ROLES                  AGE   VERSION
+k3d-k3d-cluster-kickstart-1-agent-0    Ready    <none>                 25m   v1.20.0+k3s2
+k3d-k3d-cluster-kickstart-1-agent-2    Ready    <none>                 25m   v1.20.0+k3s2
+k3d-k3d-cluster-kickstart-1-server-0   Ready    control-plane,master   25m   v1.20.0+k3s2
+k3d-k3d-cluster-kickstart-1-agent-1    Ready    <none>                 25m   v1.20.0+k3s2
+```
+
+**Recommended** to use faster cluster context switching, download the `kubectx` plugin for k8s at https://github.com/ahmetb/kubectx.
+
+To use this (after download) to switch contexts as done previously do the following:
+
+```
+kubectx                     # This will show all cluster contexts
+kubectx <context-name>      # This will switch to the context identited using the '<context-name>'
+```
 
