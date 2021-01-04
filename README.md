@@ -169,6 +169,7 @@ k3d-worker-node-1                    Ready    <none>                 28s   v1.20
 To add `N` server nodes to the current single node cluster issue the following syntax: **(Create 2 additional server nodes)**
 
 ```
+Syntax:
 k3d node create <node-name> --cluster <cluster-name-to-associate-new-node(s)> --replicas <int for # of replicas> --role server --wait 
 
 Actual use:
