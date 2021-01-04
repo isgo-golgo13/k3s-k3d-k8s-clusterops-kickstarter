@@ -205,19 +205,19 @@ Now the next steps will create 3 clusters.
 
 To Create `3` HA Clusters Each (min 3 server nodes/3 worker nodes) run the following:
 
-`1.` Create cluster 1 as `k3d-cluster-kickstart-1`: With 3 server nodes and 3 worker nodes
+**1.** Create cluster 1 as `k3d-cluster-kickstart-1`: With 3 server nodes and 3 worker nodes
 
 ```
 k3d cluster create k3d-cluster-kickstart-1 --agents 3 --servers 3 --verbose (verbose flag is NOT required)
 ```
 
-`2.` Create cluster 2 as `k3d-cluster-kickstart-2`: With 3 server nodes and 3 worker nodes
+**2.** Create cluster 2 as `k3d-cluster-kickstart-2`: With 3 server nodes and 3 worker nodes
 
 ```
 k3d cluster create k3d-cluster-kickstart-2 --agents 3 --servers 3 --verbose (verbose flag is NOT required)
 ```
 
-`3.` Create cluster 3 as `k3d-cluster-kickstart-3`: With 3 server nodes and 3 worker nodes
+**3.** Create cluster 3 as `k3d-cluster-kickstart-3`: With 3 server nodes and 3 worker nodes
 
 ```
 k3d cluster create k3d-cluster-kickstart-3 --agents 3 --servers 3 --verbose (verbose flag is NOT required)
