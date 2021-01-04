@@ -109,7 +109,7 @@ Actual Use:
 k3d cluster delete k3d-kickstart-cluster
 ```
 
-This will delete all k8s cluster config (context) IF and ONLY IF this was the only k8s cluster created using `k3d cluster create`. If there were other k8s clusters created `ONLY` the context of the deleted cluster will get deleted.
+This will delete all k8s cluster config (context) **IF** and **ONLY IF** this was the only k8s cluster created using `k3d cluster create`. If there were other k8s clusters created **ONLY** the context of the deleted cluster will get deleted.
 
 
 
