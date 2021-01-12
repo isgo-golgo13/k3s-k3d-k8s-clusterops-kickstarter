@@ -1,4 +1,4 @@
-# k3s-k3d-k8s-clusterops-kickstarter
+# k3s-k3d-k8s-clusterops spin up guide
 K8s Rancher k3d (k3s) Cluster Ops kick starter repo to start up new k3d k8s clusters and lifecycle administration
 
 #### Create k3d cluster (1 server k8s node, 3 worker nodes)
